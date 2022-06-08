@@ -1,4 +1,5 @@
 import BreadCrumbs from "@components/common/BreadCrumbs";
+import Link from "next/link";
 import CartItem from "./CartItem";
 
 
@@ -44,7 +45,9 @@ export default function Cart() {
                                     <li>Subtotal <span>$ 750.0</span></li>
                                     <li>Total <span>$ 750.0</span></li>
                                 </ul>
-                                <a href="#" className="primary-btn">Proceed to checkout</a>
+                                <Link href={'/checkout'}>
+                                    <a className="primary-btn">Proceed to checkout</a>
+                                </Link>
                             </div>
                         </div>
                     </div>

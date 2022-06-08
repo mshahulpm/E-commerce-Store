@@ -1,12 +1,21 @@
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 
 
 export default function SignUp({ setSignUp }: any) {
 
+    const router = useRouter();
+
+    function handleSubmit(e: any) {
+        e.preventDefault();
+        toast.success('Successfully logged in!');
+        router.push('/');
+    }
     return (
         <>
             <div>
-                <form className="_login mt-4">
+                <form className="_login mt-4" onSubmit={handleSubmit}>
                     <h4 className="font-weight-bold my-2 mb-4">Sign Up</h4>
                     <div className="form-outline mb-4">
                         <label className="form-label" htmlFor="form2Example1">Email address</label>

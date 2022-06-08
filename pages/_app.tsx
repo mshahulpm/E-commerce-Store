@@ -1,3 +1,5 @@
+import { ToastContainer } from 'react-toastify'
+import ProgressBar from '@components/common/ProgressBar'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Layout from 'src/layout'
@@ -12,6 +14,13 @@ import "@styles/custom.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// react-toastify
+import 'react-toastify/dist/ReactToastify.css'
+
+// progress bar
+// import "nprogress/nprogress.css";
+import '@styles/progressbar.css'
+
 function MyApp({ Component, pageProps }: AppProps) {
 
   // @ts-ignore
@@ -22,6 +31,19 @@ function MyApp({ Component, pageProps }: AppProps) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </Head>
     <CustomLayout>
+      <ProgressBar />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        toastClassName={'dark-toast'}
+      />
       <Component {...pageProps} />
     </CustomLayout>
   </>
