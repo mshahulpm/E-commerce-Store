@@ -14,3 +14,5 @@ Removing copyright information without the license will result in suspension of 
 
 
 ## Contact us
+
+<!-- some edits -->
