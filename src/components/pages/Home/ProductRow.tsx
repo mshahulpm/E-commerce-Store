@@ -22,10 +22,11 @@ export default function ProductRow({ heading, _link, products }: props) {
                 </div>
             </div>
             <div className="row">
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {
+                    products?.map((prod, ind) => (
+                        <ProductCard product={prod} key={ind} />
+                    ))
+                }
             </div>
         </div>
     )

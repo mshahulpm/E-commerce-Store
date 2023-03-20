@@ -21,6 +21,10 @@ import 'react-toastify/dist/ReactToastify.css'
 // import "nprogress/nprogress.css";
 import '@styles/progressbar.css'
 
+import { ApolloProvider } from "@apollo/client";
+import client from 'src/services/api'
+
+
 function MyApp({ Component, pageProps }: AppProps) {
 
   // @ts-ignore
@@ -44,7 +48,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         pauseOnHover
         toastClassName={'dark-toast'}
       />
-      <Component {...pageProps} />
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
     </CustomLayout>
   </>
 }

@@ -1,35 +1,31 @@
-import Cookie from "js-cookie";
-
-const getToken = () => {
-    const refreshToken = Cookie.get("accessToken");
-    return refreshToken;
-};
+import cookie from 'js-cookie'
+import jwtDecode from 'jwt-decode'
+import { TIME } from '../constants/time'
 
 
+export function setToken(token: string) {
 
-const setToken = (accessToken: string) => {
-    const expires = new Date();
-    Cookie.set("accessToken", accessToken, {
-        expires: 6
-    });
+    const decoded: any = decodeToken(token)
 
-    return true;
-};
+    if (decoded) {
 
-const removeToken = () => {
-    Cookie.remove("accessToken");
-    return true;
-};
+        const exp = new Date(((decoded.exp * 1000) - TIME.day))
 
+        cookie.set('Authorization', token, {
+            expires: exp
+        })
+    }
+}
+
+export const getAuthToken = () => cookie.get('Authorization')
+export const deleteAuthToken = () => cookie.remove('Authorization')
 
 
 
-
-
-const Tokens = {
-    setToken,
-    removeToken,
-    getToken
-};
-
-export default Tokens;
+export function decodeToken(token: string) {
+    try {
+        return jwtDecode(token)
+    } catch (error) {
+        return false
+    }
+}

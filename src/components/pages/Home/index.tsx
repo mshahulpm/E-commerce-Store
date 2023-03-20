@@ -4,8 +4,13 @@ import DealsOfTheDay from "./DealsOfTheDay";
 import ProductRow from "./ProductRow";
 
 
+type props = {
+    products: any[]
+}
 
-export default function Home() {
+export default function Home({ products }: props) {
+
+
 
     return (
         <div>
@@ -33,7 +38,7 @@ export default function Home() {
             <ProductRow
                 heading="Best Sellers"
                 _link="/products"
-                products={[]}
+                products={products}
             />
             {/* Recommendation */}
             <ProductRow
